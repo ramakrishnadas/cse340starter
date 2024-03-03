@@ -1,6 +1,254 @@
+:root {
+  --primary-color: #0e2f45;
+  --secondary-color: #3a90c9;
+  --heading-font: 'Open Sans', sans-serif;
+  --body-font: Georgia, serif;
+}
+
+/* Header section */
+body {
+  font-family: var(--body-font);
+  max-width: 480px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+}
+
+.siteName a {
+  font-size: 3em;
+  font-family: var(--heading-font);
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.siteName a, #tools a {
+  text-decoration: none;
+}
+
+#top-header {
+  position: relative;
+  padding: 10px;
+}
+
+#tools {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+}
+
+#tools a {
+  color: var(--primary-color);
+}
+
+/* Nav section */
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;;
+  height: 60px;;
+  padding: 0;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.2em;
+}
+
+/* Main section */
+h1 {
+  font-size: 1.6em;
+  margin-left: 10px;
+}
+
+.hero {
+  position: relative;
+}
+
+#hero-image {
+  display: block;
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 35%;
+  height: 80%;
+  margin: 10px auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 2;
+}
+
+.cta {
+  position: absolute; 
+  top: 40%; 
+  left: 20%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  color: var(--secondary-color);
+  padding: 20px;
+}
+
+.cta h2 {
+  font-size: 1.2em;
+}
+
+.cta p {
+  line-height: 1.4em;
+}
+
+.cta button {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  font-weight: 800;
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.reviews {
+  margin: 30px 0 0 10px;
+  line-height: 2em;
+}
+
+.upgrades-container h2 {
+  margin: 30px 0 20px 10px;
+}
+.upgrades {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.upgrades div {
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+  text-align: center;
+}
+
+.image-box img {
+  display: block;
+  margin: 0 auto;
+}
+
+.image-box {
+  background-color: var(--secondary-color);
+  border: 2px solid var(--primary-color);
+  width: 100%;
+  height: 90px;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.upgrades div a {
+  margin-bottom: 50px;
+}
+
+
 /******* Change Box Model ***************/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+}
+
+@media screen and (min-width: 480px) {
+  body {
+    max-width: 100%;
+    background-image: url(/images/site/checkerboard.jpg);
+    background-repeat: repeat;
+    background-size: 400px 400px;
+  }
+
+  #wrapper {
+    background-color: white;
+    max-width: 80%;
+    margin: 20px auto;
+    border: 8px solid var(--secondary-color);
+    border-radius: 20px;
+    padding-top: 20px;
+  }
+
+  #top-header {
+    margin: 20px 0;
+  }
+
+  #tools a {
+    font-size: 1.2em;
+    margin-right: 10px;
+  }
+
+  nav {
+    width: 98%;
+    margin: 20px auto;
+  }
+
+  nav ul {
+    font-size: 1.4em;
+    justify-content: space-evenly;
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+
+  .cta {
+    font-size: 2em;
+    left: 20%;
+  }
+
+  .cta button {
+    width: 250px;
+    height: 70px;
+    font-size: 1em;
+  }
+
+  section {
+    grid-template-columns: 1fr 1fr;
+    margin: 30px auto;
+  }
+
+  .upgrades-container {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    width: 80%;
+    margin: 10px auto;
+  }
+
+  .reviews {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    justify-self: center;
+  }
+
+  .reviews h2 {
+    margin-left: 20px;
+  }
+
+  .reviews li {
+    font-size: 1.3em;
+    line-height: 2em;
+  }
+
+  footer p {
+    margin-left: 20px;
+  }
 }
