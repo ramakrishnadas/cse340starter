@@ -60,6 +60,7 @@ nav ul {
 
 nav ul li a {
   text-decoration: none;
+  color: inherit;
 }
 
 nav ul li a:visited {
