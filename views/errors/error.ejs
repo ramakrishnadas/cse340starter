@@ -1,0 +1,9 @@
+<!-- Title that is passed in -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<!-- Error message that is passed in -->
+<%- message %>
