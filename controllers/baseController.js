@@ -6,4 +6,9 @@ baseController.buildHome = async function(req, res){
     res.render("index", {title: "Home", nav})
 }
 
+baseController.triggerError = async (req, res, next) => {
+    next({status: 500, message: 'Internal Server Error!'})
+}
+
+
 module.exports = baseController
