@@ -68,7 +68,7 @@ Util.buildDetailGrid = async function(data) {
         grid = '<div id="vehicle-data">'
         grid += '<img src="' + vehicle.inv_image
         +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
-        +' on CSE Motors" /></a>'
+        +' on CSE Motors">'
         grid += '<div class="vehicle-info">'
         grid += '<h2>' + vehicle.inv_make + ' ' + vehicle.inv_model + ' Details' + '</h2>'
         grid += '<p><span class="label">Price:</span> $' 
