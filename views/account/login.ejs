@@ -1,0 +1,23 @@
+<!-- Content Heading -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<!-- Display flash messages -->
+<%- messages() %>
+
+<!-- Display form -->
+<div id="form-wrapper">
+    <form id="login-form" method="post">
+        <label for="account_email">Email:</label><br>
+        <input type="email" id="account_email" name="account_email" required><br>
+        <label for="account_password">Password:</label><br>
+        <span>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</span><br>
+        <input type="password" id="account_password" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"><br>
+        <button id="submit-btn" type="submit">LOGIN</button>
+    </form>
+    
+    <p>No account? <a href="/account/register">Sign-up</a></p>
+</div>
