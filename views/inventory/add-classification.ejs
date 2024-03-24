@@ -1,0 +1,28 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<!-- Display flash messages -->
+<%- messages() %>
+
+<!-- Display errors (if any) -->
+<% if (errors) { %>
+<ul class="notice">
+<% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+<%  }) %>
+</ul>
+<% } %>
+
+<!-- Display content -->
+<div id="form-wrapper">
+    <form id="add-classification-form" action="/inv/add-classification" method="post">
+        <p>FIELD IS REQUIRED</p>
+        <label for="classification_name">Classification Name:</label><br>
+        <span>Name must be alphabetic characters only.</span><br>
+        <input type="text" name="classification_name" id="classification_name" required pattern="^(\d|\w)+$" value="<%= locals.classification_name %>"><br>
+        <button id="submit-btn" type="submit">Add Classification</button>
+    </form>
+</div>

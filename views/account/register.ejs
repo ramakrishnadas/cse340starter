@@ -9,12 +9,12 @@
 <%- messages() %>
 
 <!-- Display errors (if any) -->
-<% if (errors && errors.array().length > 0) { %>
-    <ul class="notice">
-        <% errors.array().forEach(error => { %>
-            <li><%= error.msg %></li>
-        <% }) %>
-    </ul>
+<% if (errors) { %>
+<ul class="notice">
+<% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+<%  }) %>
+</ul>
 <% } %>
 
 <!-- Display form -->
@@ -22,11 +22,11 @@
     <form id="register-form" action="/account/register" method="post">
         <p>ALL FIELDS ARE REQUIRED</p>
         <label for="account_firstname">First Name:</label><br>
-        <input type="text" id="account_firstname" name="account_firstname" required><br>
+        <input type="text" id="account_firstname" name="account_firstname" required value="<%= locals.account_firstname %>"><br>
         <label for="account_lastname">Last Name:</label><br>
-        <input type="text" id="account_lastname" name="account_lastname" required><br>
+        <input type="text" id="account_lastname" name="account_lastname" required value="<%= locals.account_lastname %>"><br>
         <label for="account_email">Email:</label><br>
-        <input type="email" id="account_email" name="account_email" required><br>
+        <input type="email" id="account_email" name="account_email" required value="<%= locals.account_email %>"><br>
         <label for="account_password">Password:</label><br>
         <span>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</span><br>
         <input type="password" id="account_password" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"><br> 

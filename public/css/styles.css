@@ -285,37 +285,22 @@ footer a {
   text-align: center;
 }
 
-#login-form {
+form {
   margin: 10px auto;
   font-size: 1.2em;
   display: inline-block;
   text-align: left;
 }
 
-#register-form {
-  margin: 10px auto;
-  font-size: 1.2em;
-  display: inline-block;
-  text-align: left;
-}
-
-#login-form input {
+form input {
   line-height: 2.5em;
   width: 350px;
   margin: 10px 0;
   border-radius: 10px;
-  padding: 2px;
+  padding: 5px;
 }
 
-#register-form input {
-  line-height: 2.5em;
-  width: 350px;
-  margin: 10px 0;
-  border-radius: 10px;
-  padding: 2px;
-}
-
-#register-form span, #login-form span {
+form span {
   display: inline-block;
   width: 350px;
   margin: 10px 0;
@@ -327,8 +312,23 @@ footer a {
   font-size: 0.8em;
 }
 
-#register-form p {
+form p {
   font-size: 0.8em !important;
+}
+
+form select {
+  height: 40px;
+  width: 250px;
+  margin: 10px 0;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+form #inv_description {
+  width: 350px;
+  margin: 10px 0;
+  border-radius: 10px;
+  padding: 8px;
 }
 
 #submit-btn {
@@ -342,6 +342,10 @@ footer a {
   border-radius: 20px;
   font-weight: 700;
   cursor: pointer;
+}
+
+#add-classification-form #submit-btn {
+  width: 200px;
 }
 
 #submit-btn:hover {
@@ -358,13 +362,21 @@ footer a {
   color: inherit;
 }
 
-input:required:invalid, input:focus:invalid {
-  border: 2px solid red;
+input:focus:invalid, textarea:focus:invalid {
+  background-color: rgba(242, 38, 19, 0.9);
  }
 
-input:required:valid {
-  border: 2px solid green;
+input:required:valid, textarea:required:valid {
+  background-color: rgba(46, 204, 113, 0.9);
 }
+
+/* Management view */
+
+.management-links {
+  margin: 80px;
+  font-size: 1.8em;
+}
+
 /******* Change Box Model ***************/
 *,
 *:before,

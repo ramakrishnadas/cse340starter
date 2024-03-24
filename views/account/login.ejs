@@ -8,9 +8,18 @@
 <!-- Display flash messages -->
 <%- messages() %>
 
+<!-- Display errors (if any) -->
+<% if (errors) { %>
+<ul class="notice">
+<% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+<%  }) %>
+</ul>
+<% } %>
+
 <!-- Display form -->
 <div id="form-wrapper">
-    <form id="login-form" method="post">
+    <form id="login-form" action="/account/login" method="post">
         <label for="account_email">Email:</label><br>
         <input type="email" id="account_email" name="account_email" required><br>
         <label for="account_password">Password:</label><br>

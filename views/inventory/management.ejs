@@ -1,0 +1,14 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<!-- Display flash messages -->
+<%- messages() %>
+
+<!-- Display content -->
+<div class="management-links">
+    <p><a href="/inv/add-classification">Add New Classification</a></p>
+    <p><a href="/inv/add-inventory">Add New Vehicle</a></p>
+</div>

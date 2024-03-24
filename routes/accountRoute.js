@@ -18,4 +18,16 @@ router.post(
     utilities.handleErrors(accountController.registerAccount)
 );
 
+// Post login data
+router.post(
+    "/login",
+    regValidate.loginRules(),
+    regValidate.checkLoginData,
+    utilities.handleErrors(accountController.buildLogin),
+    (req, res) => {
+      console.log("attention")  
+      res.status(200).send('login process')
+    }
+)
+
 module.exports = router;
