@@ -8,6 +8,20 @@ const managementValidate = require("../utilities/management-validation")
 // Route to management view
 router.get("/", utilities.handleErrors(invController.buildManagement))
 
+// Route to get Inventory (management view)
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
+// Route to Edit Inventory view
+router.get("/edit/:inv_id", utilities.handleErrors(invController.buildEditInventory))
+
+// Post edit inventory data 
+router.post(
+    "/edit-inventory",
+    managementValidate.InventoryRules(),
+    managementValidate.checkUpdateData,
+    utilities.handleErrors(invController.updateInventory)
+)
+
 // Route to add classification view
 router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification))
 

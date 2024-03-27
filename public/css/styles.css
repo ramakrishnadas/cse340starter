@@ -377,6 +377,51 @@ input:required:valid, textarea:required:valid {
   font-size: 1.8em;
 }
 
+#management-wrapper {
+  margin: 10px 80px;
+  margin-bottom: 200px;
+}
+
+#management-wrapper h2 {
+  font-size: 1.8em;
+}
+
+#management-wrapper select {
+  height: 40px;
+  width: 250px;
+  margin: 10px 0;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+#management-wrapper table {
+  margin: 40px 0;
+  border-spacing: 20px;
+  border-collapse: collapse;
+}
+
+#management-wrapper table tr, #management-wrapper table td {
+  border: 1px solid black;
+  padding: 20px;
+}
+
+/* Edit Inventory view */
+
+#edit-inventory-form button {
+  width: 200px;
+}
+
+#edit-inventory-form button:disabled {
+  background-color: gray;
+  color: inherit;
+}
+
+#edit-inventory-form button:disabled:hover {
+  background-color: gray;
+  color: inherit;
+  cursor: not-allowed;
+}
+
 /******* Change Box Model ***************/
 *,
 *:before,

@@ -51,14 +51,14 @@ validate.InventoryRules = () => {
       .trim()
       .escape()
       .notEmpty()
-      .isLength({ min: 3 })
+      .isLength({ min: 1 })
       .withMessage("Please provide the make of the vehicle."),
 
     body("inv_model")
       .trim()
       .escape()
       .notEmpty()
-      .isLength({ min: 3 })
+      .isLength({ min: 1 })
       .withMessage("Please provide the model of the vehicle."),
 
     body("inv_description")
@@ -112,11 +112,17 @@ validate.InventoryRules = () => {
   ]
 }
 
+
+/* ******************************
+ * Check data and return errors or continue to add vehicle
+ * ***************************** */
 validate.checkInventoryData = async (req, res, next) => {
   const { 
     classification_id, 
-    inv_make, inv_model, 
-    inv_description, inv_image, 
+    inv_make, 
+    inv_model, 
+    inv_description, 
+    inv_image, 
     inv_thumbnail, 
     inv_price, 
     inv_year,
@@ -135,6 +141,51 @@ validate.checkInventoryData = async (req, res, next) => {
       nav,
       classificationList,
       classification_id, 
+      inv_make, 
+      inv_model, 
+      inv_description, 
+      inv_image, 
+      inv_thumbnail, 
+      inv_price, 
+      inv_year,
+      inv_miles,
+      inv_color
+    })
+    return
+  }
+  next()
+}
+
+/* ******************************
+ * Check data and return errors (redirect back to edit view) or continue to update vehicle
+ * ***************************** */
+validate.checkUpdateData = async (req, res, next) => {
+  const { 
+    classification_id, 
+    inv_id,
+    inv_make, 
+    inv_model, 
+    inv_description, 
+    inv_image, 
+    inv_thumbnail, 
+    inv_price, 
+    inv_year,
+    inv_miles,
+    inv_color
+  } = req.body
+  const itemName = `${inv_make} ${inv_model}`
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    let classificationList = await utilities.buildClassificationList(classification_id);
+    res.render("./inventory/edit-inventory", {
+      errors,
+      title: "Edit " + itemName,
+      nav,
+      classificationList,
+      classification_id, 
+      inv_id,
       inv_make, 
       inv_model, 
       inv_description, 
