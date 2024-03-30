@@ -407,7 +407,7 @@ input:required:valid, textarea:required:valid {
 
 /* Edit Inventory view */
 
-#edit-inventory-form button {
+#edit-inventory-form button, #delete-inventory-form button, #change-password-form button {
   width: 200px;
 }
 
@@ -422,6 +422,22 @@ input:required:valid, textarea:required:valid {
   cursor: not-allowed;
 }
 
+/* Account management view */
+#account-management {
+  margin: 30px 0px 40px 80px;
+}
+
+#account-management h2 {
+  font-size: 1.8em;
+}
+
+#account-management h3 {
+  font-size: 1.5em;
+}
+
+#account-management p {
+  font-size: 1.2em;
+}
 /******* Change Box Model ***************/
 *,
 *:before,

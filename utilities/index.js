@@ -152,4 +152,22 @@ Util.checkLogin = (req, res, next) => {
     }
 }
 
+/* ****************************************
+ *  Check Employee or Admin
+ * ************************************ */
+Util.checkEmployeeOrAdmin = (req, res, next) => {
+  const accountData = res.locals.accountData
+  const account_type = accountData.account_type
+
+  if (account_type == "Employee" || account_type == "Admin") {
+    next()
+  } else {
+    req.flash(
+      "notice",
+      "Sorry, you are not authorized to do this. Please log in with an Employee or Admin account."
+    )
+    return res.redirect("/account/login")
+  }
+}
+
 module.exports = Util

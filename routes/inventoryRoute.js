@@ -22,8 +22,23 @@ router.post(
     utilities.handleErrors(invController.updateInventory)
 )
 
+// Route to Delete Inventory view
+router.get("/delete/:inv_id", utilities.handleErrors(invController.buildDeleteInventory))
+
+// Post delete inventory data 
+router.post(
+    "/delete-inventory",    
+    utilities.handleErrors(invController.deleteInventory)
+)
+
 // Route to add classification view
-router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification))
+router.get(
+    "/add-classification",
+    utilities.checkLogin, 
+    utilities.checkJWTToken,
+    utilities.checkEmployeeOrAdmin,
+    utilities.handleErrors(invController.buildAddClassification)
+)
 
 // Post classification data
 router.post(
@@ -33,11 +48,18 @@ router.post(
     utilities.handleErrors(invController.addClassification)
 )
 
-router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventory))
+// Route to add vehicle view
+router.get(
+    "/add-inventory", 
+    utilities.checkLogin, 
+    utilities.checkJWTToken,
+    utilities.checkEmployeeOrAdmin,
+    utilities.handleErrors(invController.buildAddInventory)
+)
 
 // Post vehicle data
 router.post(
-    "/add-inventory", 
+    "/add-inventory",
     managementValidate.InventoryRules(),
     managementValidate.checkInventoryData,
     utilities.handleErrors(invController.addInventory)
