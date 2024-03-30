@@ -191,7 +191,7 @@ validate.changePasswordRules = () => {
 }
 
 validate.checkChangePasswordData = async (req, res, next) => {
-  const { account_password } = req.body
+  const { account_firstname, account_lastname, account_email, account_password } = req.body
   let errors = []
   errors = validationResult(req)
   if (!errors.isEmpty()) {
@@ -200,6 +200,9 @@ validate.checkChangePasswordData = async (req, res, next) => {
       errors,
       title: "Update Account Information",
       nav,
+      account_firstname,
+      account_lastname,
+      account_email,
       account_password
     })
     return
