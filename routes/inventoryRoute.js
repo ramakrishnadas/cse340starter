@@ -6,7 +6,13 @@ const utilities = require("../utilities/")
 const managementValidate = require("../utilities/management-validation")
 
 // Route to management view
-router.get("/", utilities.handleErrors(invController.buildManagement))
+router.get(
+    "/",
+    utilities.checkLogin, 
+    utilities.checkJWTToken,
+    utilities.checkEmployeeOrAdmin,
+    utilities.handleErrors(invController.buildManagement)
+)
 
 // Route to get Inventory (management view)
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
