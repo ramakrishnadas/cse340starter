@@ -1,0 +1,25 @@
+<!-- Content Heading -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<!-- Display flash messages -->
+<%- messages() %>
+
+<!-- Display errors (if any) -->
+<% if (errors) { %>
+<ul class="notice">
+<% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+<%  }) %>
+</ul>
+<% } %>
+
+<!-- Display content -->
+<div id="inbox-wrapper">
+    <p id="return-to-inbox"><a href="/message">Return to Inbox</a></p>
+    
+    <%- inboxTable %>
+</div>

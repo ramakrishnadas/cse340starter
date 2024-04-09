@@ -1,0 +1,40 @@
+<!-- Content Heading -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<!-- Display flash messages -->
+<%- messages() %>
+
+<!-- Display errors (if any) -->
+<% if (errors) { %>
+<ul class="notice">
+<% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+<%  }) %>
+</ul>
+<% } %>
+
+<!-- Display content -->
+
+<div id="form-wrapper">
+    <p>This is an internal system only. Recipients are limited to the three generic accounts.</p>
+    <form id="new-message-form" action="/message/create" method="post">
+        <p>All inputs are required.</p>
+        <label for="message_to">To:</label><br>
+        <select name="message_to" id="message_to" required>
+            <option value="">Select a Recipient</option>
+            <option value="9">Basic Client</option>
+            <option value="10">Happy Employee</option>
+            <option value="11">Manager User</option>
+        </select><br>
+        <label for="message_subject">Subject:</label><br>
+        <input type="text" id="message_subject" name="message_subject" required value="<%= locals.message_subject %>"><br>
+        <label for="message_body">Message:</label><br>
+        <textarea name="message_body" id="message_body" rows="10" required><%= locals.message_body %></textarea>
+        <button id="submit-btn" type="submit">Send</button>
+        <input type="hidden" name="message_from" value="<%= locals.accountData.account_id %>">
+    </form>
+</div>

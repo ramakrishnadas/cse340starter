@@ -1,0 +1,42 @@
+<!-- Content Heading -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<!-- Display flash messages -->
+<%- messages() %>
+
+<!-- Display errors (if any) -->
+<% if (errors) { %>
+<ul class="notice">
+<% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+<%  }) %>
+</ul>
+<% } %>
+
+<!-- Display content -->
+<div id="form-wrapper">
+    <p>You are replying to a message.</p>
+    <form id="reply-message-form" action="/message/reply" method="post">
+        <p>All inputs are required.</p>
+        <label for="message_to_display">To:</label><br>
+        <input type="hidden" name="message_to" value="<%= locals.message_to %>">
+        <select name="message_to_display" id="message_to_display" required disabled>
+            <option value="">Select a Recipient</option>
+            <option value="9" <% if (locals.message_to == 9) {%>selected<% } %>>Basic Client</option>
+            <option value="10" <% if (locals.message_to == 10) {%>selected<% } %>>Happy Employee</option>
+            <option value="11" <% if (locals.message_to == 11) {%>selected<% } %>>Manager User</option>
+        </select><br>
+        <label for="message_subject_display">Subject:</label><br>
+        <input type="hidden" name="message_subject" value="<%= locals.message_subject %>">
+        <input type="text" id="message_subject_display" name="message_subject_display" required value="<%= locals.message_subject %>" disabled><br>
+        <label for="message_body">Message:</label><br>
+        <textarea name="message_body" id="message_body" rows="10" required><%= locals.message_body %></textarea>
+        <button id="submit-btn" type="submit">Reply</button>
+        <input type="hidden" name="message_from" value="<%= locals.accountData.account_id %>">
+        <input type="hidden" name="message_id" value="<%= locals.message_id %>">
+    </form>
+</div>

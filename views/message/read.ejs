@@ -1,0 +1,38 @@
+<!-- Content Heading -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<!-- Display flash messages -->
+<%- messages() %>
+
+<!-- Display errors (if any) -->
+<% if (errors) { %>
+<ul class="notice">
+<% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+<%  }) %>
+</ul>
+<% } %>
+
+<!-- Display content -->
+<p id="return-to-inbox"><a href="/message">Return to Inbox</a></p>
+
+<div id="message-display">
+    <p><strong>Subject:</strong> <%= locals.message_subject %></p>
+    <p><strong>Received:</strong> <%= locals.message_created %></p>
+    <p><strong>From:</strong> <%= locals.message_from %></p>
+    <p><strong>Message:</strong><br><%= locals.message_body %></p>
+    <hr>
+</div>
+
+<div id="message-options">
+    <p><a href="/message/reply/<%= locals.message_id %>">Reply</a></p>
+    <p><a class="<%= locals.message_read %>" href="/message/markAsRead/<%= locals.message_id %>">Mark as Read</a></p>
+    <p><a href="/message/archiveMessage/<%= locals.message_id %>">Archive Message</a></p>
+    <p><a id="delete-message" href="/message/deleteMessage/<%= locals.message_id %>">Delete Message</a></p>
+</div>
+
+<script src="../../js/delete-message.js"></script>
